@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Person = require('./../models/Person');
+const Person = require('./../model/person');
 
 
 // POST route to add a person
@@ -14,6 +14,7 @@ router.post('/signup', async (req, res) =>{
         // Save the new person to the database
         const response = await newPerson.save();
         console.log('data saved');
+        res.status(200).json(response);
 
     }
     catch(err){
@@ -21,7 +22,17 @@ router.post('/signup', async (req, res) =>{
         res.status(500).json({error: 'Internal Server Error'});
     }
 })
-
+  
+router.get('/',async(req,res)=>{
+         try{
+                const data=await Person.find();
+                console.log('response fetched');
+                res.status(200).json(data);
+         }
+         catch(err){
+                    res.status(500).json({message:'Internal server error'});
+         }
+})
 
 
 router.get('/:workType', async(req, res)=>{

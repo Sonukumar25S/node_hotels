@@ -3,8 +3,8 @@ const mongoose=require('mongoose');
 require('dotenv').config();
 
 
-//const mongourl='mongodb://localhost:27017/mydb';
-const mongourl=process.env.MONGO_DBURL;
+const mongourl='mongodb://localhost:27017/mydb';
+//const mongourl=process.env.MONGO_DBURL;
 mongoose.connect(mongourl)
 .then(()=>{
     console.log('connected suceesfully');
