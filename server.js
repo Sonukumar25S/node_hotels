@@ -23,7 +23,7 @@ const menuroutes=require('./Routes/menuroutes');
 
 
 // Use the routers
-app.use('/person',localAuthmiddleware,personroutes);
+app.use('/person',personroutes);
 app.use('/menu',menuroutes);
 app.get('/',(req,res)=>{
     res.send('welcome to my hotel')
